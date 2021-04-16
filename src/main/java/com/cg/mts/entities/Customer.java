@@ -41,13 +41,13 @@ public class Customer {
     private int mobileNo;
 
  
-
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "addressId")
     private Address address;
 
  
-    
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.REFRESH,orphanRemoval = true)
     @JoinColumn(name="bankaccount")
     private BankAccount bankAccount;

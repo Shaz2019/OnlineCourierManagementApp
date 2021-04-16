@@ -15,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="manager")
+
 
 public class Manager extends OfficeStaffMember {
 	
