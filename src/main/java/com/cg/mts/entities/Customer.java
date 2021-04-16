@@ -47,20 +47,10 @@ public class Customer {
     private Address address;
 
  
-    @JsonIgnore
+    
     @OneToOne(cascade = CascadeType.REFRESH,orphanRemoval = true)
     @JoinColumn(name="bankaccount")
     private BankAccount bankAccount;
-
-    /*@OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "accountNo")
-    private BankAccount account;*/
-
- 
-
-   //  @OneToMany(mappedBy = "customer",targetEntity = Complaint.class, orphanRemoval = true, 
-    	//	 fetch = FetchType.EAGER)
-   // private List<Complaint> complaint=new ArrayList<>();
 
  
     @JsonIgnore

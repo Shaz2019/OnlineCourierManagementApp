@@ -154,12 +154,6 @@ public class Courier {
         this.receiver = receiver;
     }
     
-	/*
-	 * public Payment getPayment() { return payment; }
-	 * 
-	 * 
-	 * 
-	 * public void setPayment(Payment payment) { this.payment = payment; }
-	 */
+	
 
 }

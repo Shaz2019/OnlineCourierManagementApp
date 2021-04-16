@@ -44,7 +44,7 @@ public class OfficeStaffMember {
 	private String role;
 	
 
-	@JsonIgnore
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "addressId")
 	private Address address;

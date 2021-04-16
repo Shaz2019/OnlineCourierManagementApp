@@ -23,18 +23,6 @@ public class Address {
 	private String country;
 	private int zip;
 	
-	
-	/*@OneToOne                                //(mappedBy="addr")
-	@JoinColumn(name="customerid")
-	private Customer customer;*/
-	
-	/*@OneToOne
-	@JoinColumn(name="empId")                //(mappedBy="address")
-	private OfficeStaffMember officeMem;*/
-
-	/*@OneToOne
-	@JoinColumn(name="officeId")             //(mappedBy="addre")
-	private CourierOfficeOutlet office;*/
 
 	
 	public Address() {
@@ -137,28 +125,6 @@ public class Address {
 	public void setZip(int zip) {
 		this.zip = zip;
 	}
-	
-	
-	
-	/*public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}*/
-	/*public OfficeStaffMember getOfficeMem() {
-		return officeMem;
-	}
-	public void setOfficeMem(OfficeStaffMember officeMem) {
-		this.officeMem = officeMem;
-	}*/
-	/*public CourierOfficeOutlet getOffice() {
-		return office;
-	}
-	public void setOffice(CourierOfficeOutlet office) {
-		this.office = office;
-	}*/
-	
 	
 	
 }

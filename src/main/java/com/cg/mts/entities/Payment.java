@@ -74,10 +74,6 @@ public class Payment {
 	public void setCourier(Courier courier) {
 		this.courier = courier;
 	}
-
- 
-
-    
 	
 
 }

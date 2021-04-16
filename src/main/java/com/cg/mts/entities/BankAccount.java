@@ -25,6 +25,7 @@ public class BankAccount {
 
     @Id
     private int accountNo;
+    
     private String accountHolderName;
     private String accountType;
 
@@ -81,15 +82,5 @@ public class BankAccount {
     public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
-
- 
-
-   
-    
-
-	/*
-	 * @PreRemove public void preRemoval() { BankAccount
-	 * account=customer.getBankAccount(); customer.setBankAccount(null); }
-	 */
 
 }
