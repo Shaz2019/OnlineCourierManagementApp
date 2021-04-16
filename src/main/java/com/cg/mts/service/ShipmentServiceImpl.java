@@ -179,12 +179,8 @@ public class ShipmentServiceImpl implements IShipmentService {
 	//To validate Login
 	public boolean validateUser(int empId) {
 		Optional<OfficeStaffMember> staff1= staffMemberDao.findById(empId);
-		OfficeStaffMember staff2 = new OfficeStaffMember();
-		staff2 = staff1.get();
-		String str = staff2.getRole();
-		String str1 = "EMP";
 		
-		if(str.equals(str1)) {
+		if(staff1.isPresent()) {
 			return true;
 		}else {
 			return false;
