@@ -28,8 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "OfficeStaffMember")
 @Inheritance()
-//@DiscriminatorColumn(name = "emp_type", discriminatorType = DiscriminatorType.STRING)
-//@DiscriminatorValue("EMP")
+
 public class OfficeStaffMember {
 
 	@Id
@@ -51,7 +50,6 @@ public class OfficeStaffMember {
 	private Address address;
 
 	@JsonIgnore
-	//@JsonFormat(pattern= "HH:mm:ss")
 	@ManyToOne()
 	@JoinColumn(name = "officeId")
 	private CourierOfficeOutlet office;
@@ -133,32 +131,7 @@ public class OfficeStaffMember {
 		this.manager = manager;
 	}
 
-	/*public Set<OfficeStaffMember> getSubStaff() {
-		return subStaff;
-	}
-
-	public void setSubStaff(Set<OfficeStaffMember> subStaff) {
-		this.subStaff = subStaff;
-	}*/
-
 	
-
-
-	
-	
-	
-	/*
-	 * public void addEmployee(OfficeStaffMember employee) { employee.setempi(this);
-	 * this.getEmployees().add(employee); }
-	 */
-
-	/*
-	 * public Manager getMgr() { return mgr; }
-	 * 
-	 * 
-	 * public void setMgr(Manager mgr) { this.mgr = mgr; }
-	 */
-
 	
 
 }
