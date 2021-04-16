@@ -63,14 +63,13 @@ class CustomerTests {
 	}
 
 	@Test
-    @DisplayName("Test for retrive Customer Details By id")
-       public void getPaymentDetailsTest() {
+	@DisplayName("Test for retrive Customer Details By id")
+	public void getCustomerDetailsTest() {
 		Customer cs = new Customer(123, 324324, "Kurumi", "Roy", 741524);
-           
-           Mockito.when(customerDao.findById(100))
-           .thenReturn(java.util.Optional.ofNullable(cs));
-           
-       }
+
+		Mockito.when(customerDao.findById(100)).thenReturn(java.util.Optional.ofNullable(cs));
+
+	}
 
 	@Test
 	@DisplayName("Test for retriving all Customer Details")
@@ -82,21 +81,20 @@ class CustomerTests {
 		verify(customerDao, times(1)).findAll();
 	}
 
-    @Test
-    @DisplayName("Test for Deleteing Customer by Id")
-    public void deleteByIdTestTest() {
-    	int customerId = 1;
+	@Test
+	@DisplayName("Test for Deleteing Customer by Id")
+	public void deleteByIdTestTest() {
+		int customerId = 1;
 		customerService.deleteCustomerById(customerId);
-        
-        Mockito.verify(customerDao, times(1)).deleteById(customerId);
-    }
 
+		Mockito.verify(customerDao, times(1)).deleteById(customerId);
+	}
 
 	@Test
 	@DisplayName("Test for Updating Customer")
 	public void updateCustomerTest() {
-        Customer cs = new Customer(101, 324324, "Kurumi", "Roy", 741524);
-        customerService.addCustomer(cs);
+		Customer cs = new Customer(101, 324324, "Kurumi", "Roy", 741524);
+		customerService.addCustomer(cs);
 		Optional<Customer> customer = customerDao.findById(101);
 		if (customer.isPresent()) {
 			customer.get().setFirstName("Shaz");
@@ -127,19 +125,6 @@ class CustomerTests {
 		assertEquals(courier.getCourierId(), 1);
 
 	}
-	/*@Test
-	 * @DisplayName("Test for Making Payment")
-	public void makePayment() {
-		Courier courier = new Courier(11, CourierStatus.initiated, LocalDate.now(), LocalDate.now().plusDays(3));
-		Payment payment = new Payment();
-		//payment.setPaymentId(15);
-		payment.setPaymentMode("cash");
-		//payment.setPaymentDate(LocalDate.now());
-		payment.setCourier(courier);
-
-		Mockito.when(paymentDao.save(payment)).thenReturn(payment);
-		assertEquals(payment, customerService.makePayment(11, "cash"));
-	}*/
 
 	@Test
 	@DisplayName("Test for checking courier status")
@@ -151,7 +136,6 @@ class CustomerTests {
 		courier1.setStatus(CourierStatus.delivered);
 		courier1.setInitiatedDate(LocalDate.of(2018, 11, 16));
 		courier1.setDeliveredDate(LocalDate.of(2018, 11, 28));
-
 
 		Mockito.when(courierDao.findById(courier1.getCourierId())).thenReturn(Optional.of(courier1));
 		assertEquals(courier1.getStatus(), customerService.checkOnlineTrackingStatus(courier1.getCourierId()));

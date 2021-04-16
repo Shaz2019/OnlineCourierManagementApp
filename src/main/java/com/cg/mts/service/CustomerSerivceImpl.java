@@ -32,6 +32,10 @@ public class CustomerSerivceImpl implements ICustomerService {
 	@Autowired
 	private ShipmentServiceImpl shipmentService;
 
+	/*
+	 * This method is use to add customer If customer already exists then it will
+	 * throw Duplicate Customer Found Exception
+	 */
 	@Override
 	public Customer addCustomer(Customer customer) {
 		customerDao.save(customer);
@@ -39,18 +43,28 @@ public class CustomerSerivceImpl implements ICustomerService {
 		return customer;
 	}
 
+	/*
+	 * This method is use to get customer by giving customerId. If customer does not
+	 * exists then it will give Customer Not Found Exception
+	 */
 	@Override
 	public Optional<Customer> getCustomer(int customerId) {
 
 		return customerDao.findById(customerId);
 	}
 
+	/*
+	 * This method is use to get all customers.
+	 */
 	@Override
 	public List<Customer> getAllCustomers() {
 
 		return customerDao.findAll();
 	}
 
+	/*
+	 * This method is use to delete customer by customerId.
+	 */
 	@Override
 	public void deleteCustomerById(int customerid) {
 		customerDao.deleteById(customerid);
@@ -63,19 +77,22 @@ public class CustomerSerivceImpl implements ICustomerService {
 			System.out.println("Deleted successfully");
 	}
 
+	/*
+	 * This method is use to partially update the customer details.
+	 */
 	@Override
 	public boolean updateCustomer(Customer customer) {
 		if (customerDao.existsById(customer.getCustomerId())) {
 			customerDao.save(customer);
 			return true;
 		}
-		/*
-		 * if (customerDao.findById(customer.getCustomerId()).isPresent()) {
-		 * customerDao.save(customer); return true; }
-		 */
+
 		return false;
 	}
 
+	/*
+	 * This method is use to register courier.
+	 */
 	@Override
 	public Courier initiateProcess(int senderCustomerId, int receiverCustomerId, int consignmentNo) {
 		Optional<Customer> senderCustomer = customerDao.findById(senderCustomerId);
@@ -94,6 +111,9 @@ public class CustomerSerivceImpl implements ICustomerService {
 			return null;
 	}
 
+	/*
+	 * This method is use to register Complaint by giving courierId.
+	 */
 	@Override
 	public Payment makePayment(int courierId, String mode) {
 		if (courierDao.existsById(courierId)) {
@@ -107,24 +127,33 @@ public class CustomerSerivceImpl implements ICustomerService {
 			return null;
 	}
 
+	/*
+	 * This method is use to get Courier Status by giving courierId.
+	 */
 	@Override
 	public CourierStatus checkOnlineTrackingStatus(int courierId) {
 		Optional<Courier> courier = courierDao.findById(courierId);
 		return courier.get().getStatus();
 	}
 
+	/*
+	 * This method is use to register Complaint by giving courierId.
+	 */
 	@Override
 	public Complaint registerComplaint(Complaint complaint) {
 		complaintDao.save(complaint);
 		return complaint;
 	}
-	
+
+	/*
+	 * This method is use to validate the user by giving customerId.
+	 */
 	public boolean validateUser(int customerId) {
-		Optional<Customer> cust1= customerDao.findById(customerId);
-		
-		if(cust1.isPresent()) {
+		Optional<Customer> cust1 = customerDao.findById(customerId);
+
+		if (cust1.isPresent()) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
